@@ -1,5 +1,5 @@
 {
-  "name": "WebTesting_e2e_Labs",
+  "name": "webtesting_e2e_labs",
   "version": "1.0.0",
   "description": "Cypres e2e Testing project",
   "author": {
@@ -20,9 +20,7 @@
     "JS",
     "JavaScript",
     "Test",
-    "Cypress",
-    "Seed",
-    "Template"
+    "Cypress"
   ],
   "main": "main.js",
   "scripts": {
