@@ -1,7 +1,7 @@
 {
-  "name": "detector",
+  "name": "WebTesting_e2e_Labs",
   "version": "1.0.0",
-  "description": "Minimal Testing project setup",
+  "description": "Cypres e2e Testing project",
   "author": {
     "name": "Alberto Basalo",
     "email": "albertobasalo@agorabinaria.com",
@@ -9,12 +9,12 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AtomicBuilders/detector/issues"
+    "url": "https://github.com/AtomicBuilders/WebTesting_e2e_Labs/issues"
   },
-  "homepage": "https://github.com/AtomicBuilders/detector#readme",
+  "homepage": "https://github.com/AtomicBuilders/WebTesting_e2e_Labs#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AtomicBuilders/detector.git"
+    "url": "git+https://github.com/AtomicBuilders/WebTesting_e2e_Labs.git"
   },
   "keywords": [
     "JS",

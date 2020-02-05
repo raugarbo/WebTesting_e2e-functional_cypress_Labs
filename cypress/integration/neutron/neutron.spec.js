@@ -1,9 +1,9 @@
 /// <reference types="Cypress" />
 
-// Feature: the app should have a well formed html
-// As a user
-// I want to view a web page
-// In order to use it
+// FEATURE:     the app should have a well formed html
+// As a:        user
+// I want to:   view a recognizable web page
+// In order to: feel safe using it
 
 describe('GIVEN: the url https://atomicbuilders.github.io/neutron/', () => {
   // Arrange
@@ -20,19 +20,19 @@ describe('GIVEN: the url https://atomicbuilders.github.io/neutron/', () => {
         .and('eq', 'UTF-8'); //Assert
     });
 
-    it('AND THEN: should have _Neutrón_ on Title', () => {
+    it('AND THEN: should have _neutron_ on Title', () => {
       cy.title() //Act
-        .should('include', 'Neutrón'); //Assert
+        .should('include', 'neutron'); //Assert
     });
 
-    it('AND THEN: should have a header', () => {
-      cy.get('header') // Act
+    it('AND THEN: should have an H1 title', () => {
+      cy.get('h1') // Act
         .should('exist'); // Assert
     });
 
-    it('AND THEN: should have an h1 on the header with text _Neutrón_', () => {
-      cy.get('header > h1') // Act
-        .should('contain', 'Neutrón'); // Assert
+    it('AND THEN: should have text _neutron_ inside the H1 title ', () => {
+      cy.get('h1') // Act
+        .should('contain', 'neutron'); // Assert
     });
   });
 });
