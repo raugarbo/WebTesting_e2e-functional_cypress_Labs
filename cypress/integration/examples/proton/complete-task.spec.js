@@ -1,4 +1,4 @@
-import { ignoreParcelError } from './parcel.error';
+import { ignoreParcelError } from '../../../support/parcel.error';
 
 // FEATURE:     the app should allow me to mark tasks as completed
 // As a:        user
@@ -8,17 +8,16 @@ import { ignoreParcelError } from './parcel.error';
 describe('GIVEN: an uncompleted task', () => {
   // Arrange
   const sutUrl = 'https://labsademy.github.io/ProtonTasks/';
+  before(() => {
+    ignoreParcelError();
+    // Arrange
+    cy.visit(sutUrl);
+    cy.get('form > input').type('Dummy task to be completed');
+    cy.get('form > button')
+      .contains('Add task')
+      .click();
+  });
   context('WHEN: I want to mark the task as completed', () => {
-    before(() => {
-      ignoreParcelError();
-      // Act
-      cy.visit(sutUrl);
-      cy.get('form > input').type('Dummy task to be completed');
-      cy.get('form > button')
-        .contains('Add task')
-        .click();
-    });
-
     it('THEN: should have an input check box', () => {
       // Assert
       cy.get('#incomplete-tasks > li:first > [type="checkBox"]').should('exist');
