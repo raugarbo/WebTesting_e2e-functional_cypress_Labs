@@ -1,4 +1,5 @@
 import { ignoreParcelError } from './parcel.error';
+
 // FEATURE:     the app should have a well formed html
 // As a:        user
 // I want to:   view a recognizable web page

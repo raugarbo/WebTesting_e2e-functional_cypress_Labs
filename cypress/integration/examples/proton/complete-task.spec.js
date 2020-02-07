@@ -1,8 +1,9 @@
 import { ignoreParcelError } from './parcel.error';
+
 // FEATURE:     the app should allow me to mark tasks as completed
 // As a:        user
 // I want to:   mark a task as completed
-// In order to: focus on my work uncompleted work
+// In order to: focus on my uncompleted work
 
 describe('GIVEN: an uncompleted task', () => {
   // Arrange
