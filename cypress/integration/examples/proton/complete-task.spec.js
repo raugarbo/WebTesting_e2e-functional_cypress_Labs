@@ -1,4 +1,3 @@
-/// <reference types="Cypress" />
 import { ignoreParcelError } from './parcel.error';
 // FEATURE:     the app should allow me to mark tasks as completed
 // As a:        user

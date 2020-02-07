@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 import { ignoreParcelError } from './parcel.error';
 
 // FEATURE:     the app should allow me to create new tasks

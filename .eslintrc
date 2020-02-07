@@ -1,5 +1,9 @@
 {
-  "extends": ["plugin:prettier/recommended"],
+  "env": {
+    "cypress/globals": true
+  },
+
+  "extends": ["plugin:prettier/recommended", "plugin:cypress/recommended"],
 
   "parserOptions": {
     "ecmaVersion": 7,
@@ -9,7 +13,7 @@
     }
   },
 
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "cypress"],
 
   "rules": {
     "prettier/prettier": "error"
