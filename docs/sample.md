@@ -5,7 +5,7 @@
 
 - [e2e-ToDoList](https://github.com/AcademiaBinaria/e2e-ToDoList)
 
-## Funcional tests already done
+## Functional tests already done
 
 - **FEATURE:** the app should have a well formed html
   - _As a_ user
