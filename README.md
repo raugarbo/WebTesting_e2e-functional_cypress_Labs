@@ -2,6 +2,8 @@
 
 Laboratories for [Web Testing course](https://github.com/BitAdemy/WebTesting)
 
+E2E examples and tasks
+
 ```bash
 #npm
 npm i
