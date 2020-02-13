@@ -1,4 +1,4 @@
-import { ignoreParcelError } from '../../../support/parcel.error';
+import { ignoreParcelError } from '../../support/parcel.error';
 
 // FEATURE:     the app should allow me to create new tasks
 // As a:        user with tasks to do

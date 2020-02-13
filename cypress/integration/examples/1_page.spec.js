@@ -1,4 +1,4 @@
-import { ignoreParcelError } from '../../../support/parcel.error';
+import { ignoreParcelError } from '../../support/parcel.error';
 
 // FEATURE:     the app should have a well formed html
 // As a:        user

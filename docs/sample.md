@@ -3,7 +3,7 @@
 
 ## SUT
 
-- [e2e-ToDoList](https://github.com/AcademiaBinaria/e2e-ToDoList)
+- [e2e-ToDoList](https://github.com/LabsAdemy/ProtonTasks)
 
 ## Functional tests already done
 
