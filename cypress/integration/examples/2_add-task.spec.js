@@ -1,4 +1,6 @@
-import { assertContain, assertExists } from '../../support/asserts';
+/* eslint-disable max-nested-callbacks */
+import { click, type } from '../../support/actions';
+import { assertContain, assertContainValue, assertExists } from '../../support/asserts';
 import { ignoreParcelError } from '../../support/parcel.error';
 let sutUrl;
 
@@ -11,11 +13,18 @@ describe(`GIVEN: the To Do List App`, () => {
   arrangeTest();
   context(`WHEN: I visit the page`, () => {
     actVisit();
-    it(`THEN: should have an input text box`, assertInputExist);
-    it(`AND THEN: should have an add task button`, assertButtonContainText);
+    it(`THEN: should have an input text box`, assertInputExist());
+    it(`AND THEN: should have an add task button`, assertButtonContainText());
   });
-  context(`WHEN: I type a task description on input`, actType);
-  context(`WHEN: I type a description and click on _Add task_ button`, actTypeAndClick);
+  context(`WHEN: I type a task description on input`, () => {
+    actType();
+    it(`THEN: should be displayed`, assertDisplaysValue());
+  });
+  context(`WHEN: I type a description and click on _Add task_ button`, () => {
+    actTypeAndClick();
+    it(`THEN: should clear the input box`, assertNotContainValue());
+    it(`AND THEN: should appear on Things to do`, assertContainText());
+  });
 });
 
 function arrangeTest() {
@@ -26,37 +35,30 @@ function arrangeTest() {
 function actVisit() {
   before(() => cy.visit(sutUrl));
 }
-function assertButtonContainText() {
-  assertContain('form > button', 'Add task');
-}
 function assertInputExist() {
-  assertExists('form > input');
+  return assertExists('form > input');
+}
+function assertButtonContainText() {
+  return assertContain('form > button', 'Add task');
 }
 
 function actType() {
-  before(() => cy.get('form > input').type('Dummy task one'));
-  it(`THEN: should be displayed`, assertContainValue('Dummy task one'));
+  before(() => type('form > input', 'Dummy task one'));
   after(() => cy.get('form > input').clear());
 }
-function assertContainValue(value) {
-  return () => cy.get('form > input').should('contain.value', value);
+function assertDisplaysValue() {
+  return assertContainValue('form > input', 'Dummy task one');
 }
-
 function actTypeAndClick() {
   before(() => {
-    cy.get('form > input').type('Dummy task one');
+    type('form > input', 'Dummy task one');
     cy.get('form > button').contains('Add task').click();
   });
-
-  it(`THEN: should clear the input box`, assertNotContainValue);
-
-  it(`AND THEN: should appear on Things to do`, assertContainText('Dummy task one'));
-
-  after(() => cy.get('#incomplete-tasks > li:first > .delete').click());
+  after(() => click('#incomplete-tasks > li:first > .delete'));
 }
 function assertNotContainValue() {
-  cy.get('form > input').should('not.contain.value');
+  return () => cy.get('form > input').should('not.contain.value');
 }
-function assertContainText(text) {
-  return () => cy.get('#incomplete-tasks > li:first > label').should('contain.text', text);
+function assertContainText() {
+  return assertContain('#incomplete-tasks > li:first > label', 'Dummy task one');
 }

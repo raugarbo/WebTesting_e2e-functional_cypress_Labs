@@ -14,7 +14,7 @@ describe(`GIVEN: the proton tasks web app`, () => {
     it(`THEN: should have charset UTF-8`, assertCharset);
     it(`AND THEN: should have _Proton Tasks_ on Title`, assertTitle);
     it(`AND THEN: should have a header`, assertHeader);
-    it(`AND THEN: should have an h1 on the header with text _Proton Tasks_`, assertH1);
+    it(`AND THEN: should have an h1 on the header with text _Proton Tasks_`, assertH1());
   });
 });
 
@@ -36,5 +36,5 @@ function assertHeader() {
   cy.get('header').should('exist');
 }
 function assertH1() {
-  assertContain('header > h1', 'Proton Tasks');
+  return assertContain('header > h1', 'Proton Tasks');
 }
