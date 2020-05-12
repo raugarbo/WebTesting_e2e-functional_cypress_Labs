@@ -1,7 +1,11 @@
 /// <reference types="Cypress" />
 import { assertContain, assertExist } from '../../support/asserts';
 import { ignoreParcelError } from '../../support/parcel.error';
+const baseUrl = 'baseUrl';
 let sutUrl;
+let expectedTitle;
+let selectorHeader;
+let selectorH1;
 
 // FEATURE:     the app should have a well formed html
 // As a:        user
@@ -10,18 +14,21 @@ let sutUrl;
 
 describe(`GIVEN: the proton tasks web app`, () => {
   arrangeTest();
-  context(`WHEN: I visit the url ${Cypress.env('baseUrl')} `, () => {
+  context(`WHEN: I visit the url ${Cypress.env(baseUrl)} `, () => {
     actVisit();
     it(`THEN: should have charset UTF-8`, assertCharset);
     it(`AND THEN: should have _Proton Tasks_ on Title`, assertTitle);
     it(`AND THEN: should have a header`, assertHeader);
-    it(`AND THEN: should have an h1 on the header with text _Proton Tasks_`, assertH1);
+    it(`AND THEN: should have an h1 on the header with text _Proton Tasks_`, assertH1ContainText);
   });
 });
 
 function arrangeTest() {
   ignoreParcelError();
   sutUrl = Cypress.env('baseUrl');
+  expectedTitle = 'Proton Tasks';
+  selectorHeader = 'header';
+  selectorH1 = 'header > h1';
 }
 
 function actVisit() {
@@ -31,12 +38,12 @@ function assertCharset() {
   cy.document().should('have.property', 'charset').and('eq', 'UTF-8');
 }
 function assertTitle() {
-  cy.title().should('include', 'Proton Tasks');
+  cy.title().should('include', expectedTitle);
 }
 
 function assertHeader() {
-  assertExist('header');
+  assertExist(selectorHeader);
 }
-function assertH1() {
-  assertContain('header > h1', 'Proton Tasks');
+function assertH1ContainText() {
+  assertContain(selectorH1, expectedTitle);
 }

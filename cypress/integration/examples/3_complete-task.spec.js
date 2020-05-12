@@ -4,7 +4,16 @@
 import { click, type } from '../../support/actions';
 import { assertContain, assertExist } from '../../support/asserts';
 import { ignoreParcelError } from '../../support/parcel.error';
+const baseUrl = 'baseUrl';
 let sutUrl;
+let inputButtonText;
+let inputTaskDescription;
+let expectedTaskDescription;
+let selectorFormInput;
+let selectorFormButton;
+let selectorCompleteList;
+let selectorIncompleteList;
+
 // FEATURE:     the app should allow me to mark tasks as completed
 // As a:        user
 // I want to:   mark a task as completed
@@ -14,40 +23,47 @@ describe(`GIVEN: an uncompleted task`, () => {
   arrangeTest();
   context(`WHEN: I want to mark the task as completed`, () => {
     actVisit();
-    it(`THEN: should have an input check box`, assertCheckBoxExist);
+    it(`THEN: should have an input check box`, assertIncompleteItemCheckBoxExist);
   });
   context(`WHEN: I check the completed checkbox`, () => {
     actMarkCheck();
     it(`THEN: should be on completed tasks list`, assertIsOnCompleteList);
-    it(`AND THEN: should not be on uncompleted tasks list`, assertIsNotOnInCompleteList);
+    it(`AND THEN: should not be on uncompleted tasks list`, assertIsNotOnIncompleteList);
   });
 });
 
 function arrangeTest() {
   ignoreParcelError();
-  sutUrl = Cypress.env('baseUrl');
+  sutUrl = Cypress.env(baseUrl);
+  inputButtonText = 'Add task';
+  inputTaskDescription = 'Dummy task to be completed';
+  expectedTaskDescription = 'Dummy task to be completed';
+  selectorFormInput = 'form > input';
+  selectorFormButton = 'form > button';
+  selectorCompleteList = '#completed-tasks > li:first';
+  selectorIncompleteList = '#incomplete-tasks > li:first';
 }
 function actVisit() {
   before(() => {
     cy.visit(sutUrl);
-    type('form > input', 'Dummy task to be completed');
-    cy.get('form > button').contains('Add task').click();
+    type(selectorFormInput, inputTaskDescription);
+    cy.get(selectorFormButton).contains(inputButtonText).click();
   });
 }
-function assertCheckBoxExist() {
-  assertExist('#incomplete-tasks > li:first > [type="checkBox"]');
+function assertIncompleteItemCheckBoxExist() {
+  assertExist(`${selectorIncompleteList} > [type="checkBox"]`);
 }
 function actMarkCheck() {
   before(() => {
-    cy.get('#incomplete-tasks > li:first > [type="checkBox"]').check();
+    cy.get(`${selectorIncompleteList} > [type="checkBox"]`).check();
   });
   after(() => {
-    click('#completed-tasks > li:first > .delete');
+    click(`${selectorCompleteList} > .delete`);
   });
 }
 function assertIsOnCompleteList() {
-  assertContain('#completed-tasks > li:first > label', 'Dummy task to be completed');
+  assertContain(`${selectorCompleteList} > label`, expectedTaskDescription);
 }
-function assertIsNotOnInCompleteList() {
-  cy.get('#uncomplete-tasks > li:first > label').should('not.exist');
+function assertIsNotOnIncompleteList() {
+  cy.get(`${selectorIncompleteList} > label`).should('not.exist');
 }

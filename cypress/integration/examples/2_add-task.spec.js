@@ -2,7 +2,14 @@
 import { click, type } from '../../support/actions';
 import { assertContain, assertContainValue, assertExist } from '../../support/asserts';
 import { ignoreParcelError } from '../../support/parcel.error';
+const baseUrl = 'baseUrl';
 let sutUrl;
+let inputButtonText;
+let inputTaskDescription;
+let expectedTaskDescription;
+let selectorFormInput;
+let selectorFormButton;
+let selectorIncompleteList;
 
 // FEATURE:     the app should allow me to create new tasks
 // As a:        user with tasks to do
@@ -22,43 +29,49 @@ describe(`GIVEN: the To Do List App`, () => {
   });
   context(`WHEN: I type a description and click on _Add task_ button`, () => {
     actTypeAndClick();
-    it(`THEN: should clear the input box`, assertNotContainValue);
-    it(`AND THEN: should appear on Things to do`, assertContainText);
+    it(`THEN: should clear the input box`, assertInputNotContainValue);
+    it(`AND THEN: should appear on Things to do`, assertIncompleteListContainText);
   });
 });
 
 function arrangeTest() {
   ignoreParcelError();
-  sutUrl = Cypress.env('baseUrl');
+  sutUrl = Cypress.env(baseUrl);
+  inputButtonText = 'Add task';
+  inputTaskDescription = 'Dummy task one';
+  expectedTaskDescription = 'Dummy task one';
+  selectorFormInput = 'form > input';
+  selectorFormButton = 'form > button';
+  selectorIncompleteList = '#incomplete-tasks > li:first';
 }
 
 function actVisit() {
   before(() => cy.visit(sutUrl));
 }
 function assertInputExist() {
-  assertExist('form > input');
+  assertExist(selectorFormInput);
 }
 function assertButtonContainText() {
-  assertContain('form > button', 'Add task');
+  assertContain(selectorFormButton, inputButtonText);
 }
 
 function actType() {
-  before(() => type('form > input', 'Dummy task one'));
-  after(() => cy.get('form > input').clear());
+  before(() => type(selectorFormInput, inputTaskDescription));
+  after(() => cy.get(selectorFormInput).clear());
 }
 function assertDisplaysValue() {
-  assertContainValue('form > input', 'Dummy task one');
+  assertContainValue(selectorFormInput, expectedTaskDescription);
 }
 function actTypeAndClick() {
   before(() => {
-    type('form > input', 'Dummy task one');
-    cy.get('form > button').contains('Add task').click();
+    type(selectorFormInput, inputTaskDescription);
+    cy.get(selectorFormButton).contains(inputButtonText).click();
   });
-  after(() => click('#incomplete-tasks > li:first > .delete'));
+  after(() => click(`${selectorIncompleteList} > .delete`));
 }
-function assertNotContainValue() {
-  cy.get('form > input').should('not.contain.value');
+function assertInputNotContainValue() {
+  cy.get(selectorFormInput).should('not.contain.value');
 }
-function assertContainText() {
-  assertContain('#incomplete-tasks > li:first > label', 'Dummy task one');
+function assertIncompleteListContainText() {
+  assertContain(`${selectorIncompleteList} > label`, expectedTaskDescription);
 }
