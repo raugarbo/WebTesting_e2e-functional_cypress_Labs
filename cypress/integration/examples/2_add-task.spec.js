@@ -1,6 +1,6 @@
-/* eslint-disable max-nested-callbacks */
+/// <reference types="Cypress" />
 import { click, type } from '../../support/actions';
-import { assertContain, assertContainValue, assertExists } from '../../support/asserts';
+import { assertContain, assertContainValue, assertExist } from '../../support/asserts';
 import { ignoreParcelError } from '../../support/parcel.error';
 let sutUrl;
 
@@ -13,17 +13,17 @@ describe(`GIVEN: the To Do List App`, () => {
   arrangeTest();
   context(`WHEN: I visit the page`, () => {
     actVisit();
-    it(`THEN: should have an input text box`, assertInputExist());
-    it(`AND THEN: should have an add task button`, assertButtonContainText());
+    it(`THEN: should have an input text box`, assertInputExist);
+    it(`AND THEN: should have an add task button`, assertButtonContainText);
   });
   context(`WHEN: I type a task description on input`, () => {
     actType();
-    it(`THEN: should be displayed`, assertDisplaysValue());
+    it(`THEN: should be displayed`, assertDisplaysValue);
   });
   context(`WHEN: I type a description and click on _Add task_ button`, () => {
     actTypeAndClick();
-    it(`THEN: should clear the input box`, assertNotContainValue());
-    it(`AND THEN: should appear on Things to do`, assertContainText());
+    it(`THEN: should clear the input box`, assertNotContainValue);
+    it(`AND THEN: should appear on Things to do`, assertContainText);
   });
 });
 
@@ -36,10 +36,10 @@ function actVisit() {
   before(() => cy.visit(sutUrl));
 }
 function assertInputExist() {
-  return assertExists('form > input');
+  assertExist('form > input');
 }
 function assertButtonContainText() {
-  return assertContain('form > button', 'Add task');
+  assertContain('form > button', 'Add task');
 }
 
 function actType() {
@@ -47,7 +47,7 @@ function actType() {
   after(() => cy.get('form > input').clear());
 }
 function assertDisplaysValue() {
-  return assertContainValue('form > input', 'Dummy task one');
+  assertContainValue('form > input', 'Dummy task one');
 }
 function actTypeAndClick() {
   before(() => {
@@ -57,8 +57,8 @@ function actTypeAndClick() {
   after(() => click('#incomplete-tasks > li:first > .delete'));
 }
 function assertNotContainValue() {
-  return () => cy.get('form > input').should('not.contain.value');
+  cy.get('form > input').should('not.contain.value');
 }
 function assertContainText() {
-  return assertContain('#incomplete-tasks > li:first > label', 'Dummy task one');
+  assertContain('#incomplete-tasks > li:first > label', 'Dummy task one');
 }

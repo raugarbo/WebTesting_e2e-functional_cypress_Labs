@@ -1,4 +1,5 @@
-import { assertContain } from '../../support/asserts';
+/// <reference types="Cypress" />
+import { assertContain, assertExist } from '../../support/asserts';
 import { ignoreParcelError } from '../../support/parcel.error';
 let sutUrl;
 
@@ -14,7 +15,7 @@ describe(`GIVEN: the proton tasks web app`, () => {
     it(`THEN: should have charset UTF-8`, assertCharset);
     it(`AND THEN: should have _Proton Tasks_ on Title`, assertTitle);
     it(`AND THEN: should have a header`, assertHeader);
-    it(`AND THEN: should have an h1 on the header with text _Proton Tasks_`, assertH1());
+    it(`AND THEN: should have an h1 on the header with text _Proton Tasks_`, assertH1);
   });
 });
 
@@ -32,9 +33,10 @@ function assertCharset() {
 function assertTitle() {
   cy.title().should('include', 'Proton Tasks');
 }
+
 function assertHeader() {
-  cy.get('header').should('exist');
+  assertExist('header');
 }
 function assertH1() {
-  return assertContain('header > h1', 'Proton Tasks');
+  assertContain('header > h1', 'Proton Tasks');
 }
