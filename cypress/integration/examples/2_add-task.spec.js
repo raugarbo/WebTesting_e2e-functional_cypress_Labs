@@ -1,3 +1,5 @@
+/* eslint-disable max-lines-per-function */
+/* eslint-disable max-nested-callbacks */
 import { ignoreParcelError } from '../../support/parcel.error';
 
 // FEATURE:     the app should allow me to create new tasks
@@ -48,9 +50,7 @@ describe('GIVEN: the To Do List App', () => {
     before(() => {
       // Act
       cy.get('form > input').type('Dummy task one');
-      cy.get('form > button')
-        .contains('Add task')
-        .click();
+      cy.get('form > button').contains('Add task').click();
     });
 
     it('THEN: should clear the input box', () => {

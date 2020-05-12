@@ -1,3 +1,5 @@
+/* eslint-disable max-lines-per-function */
+/* eslint-disable max-nested-callbacks */
 import { ignoreParcelError } from '../../support/parcel.error';
 
 // FEATURE:     the app should have a well formed html
@@ -5,9 +7,9 @@ import { ignoreParcelError } from '../../support/parcel.error';
 // I want to:   view a recognizable web page
 // In order to: feel safe using it
 
-describe('GIVEN: the url https://labsademy.github.io/ProtonTasks/', () => {
+describe(`GIVEN: the url ${Cypress.env('baseUrl')} `, () => {
   // Arrange
-  const sutUrl = 'https://labsademy.github.io/ProtonTasks/';
+  const sutUrl = Cypress.env('baseUrl');
   context('WHEN: I visit it', () => {
     before(() => {
       ignoreParcelError();
@@ -17,9 +19,7 @@ describe('GIVEN: the url https://labsademy.github.io/ProtonTasks/', () => {
 
     it('THEN: should have charset UTF-8', () => {
       //Assert
-      cy.document()
-        .should('have.property', 'charset')
-        .and('eq', 'UTF-8');
+      cy.document().should('have.property', 'charset').and('eq', 'UTF-8');
     });
 
     it('AND THEN: should have _Proton Tasks_ on Title', () => {

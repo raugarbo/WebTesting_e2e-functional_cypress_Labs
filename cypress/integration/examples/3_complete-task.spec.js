@@ -1,3 +1,5 @@
+/* eslint-disable max-lines-per-function */
+/* eslint-disable max-nested-callbacks */
 import { ignoreParcelError } from '../../support/parcel.error';
 
 // FEATURE:     the app should allow me to mark tasks as completed
@@ -13,9 +15,7 @@ describe('GIVEN: an uncompleted task', () => {
     // Arrange
     cy.visit(sutUrl);
     cy.get('form > input').type('Dummy task to be completed');
-    cy.get('form > button')
-      .contains('Add task')
-      .click();
+    cy.get('form > button').contains('Add task').click();
   });
   context('WHEN: I want to mark the task as completed', () => {
     it('THEN: should have an input check box', () => {

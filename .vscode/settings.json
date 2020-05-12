@@ -1,7 +1,4 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "editor.formatOnType": true,
   "workbench.colorCustomizations": {
     "activityBar.background": "#65c89b",
     "activityBar.activeBorder": "#945bc4",
@@ -15,17 +12,22 @@
     "titleBar.inactiveForeground": "#15202b99",
     "statusBar.background": "#42b883",
     "statusBarItem.hoverBackground": "#359268",
-    "statusBar.foreground": "#15202b"
+    "statusBar.foreground": "#15202b",
+    "activityBar.activeBackground": "#65c89b",
+    "statusBar.border": "#42b883",
+    "titleBar.border": "#42b883"
   },
   "peacock.color": "#42b883",
-  "spellright.language": [
-    "en",
-    "es"
-  ],
-  "spellright.documentTypes": [
-    "markdown",
-    "latex",
-    "plaintext",
-    "javascript"
-  ]
+  "workbench.colorTheme": "Night Owl",
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "prettier.useEditorConfig": true,
+  "prettier.disableLanguages": ["vue", "xlf", "xml", "html"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "html.format.wrapAttributes": "force-aligned",
+  "html.format.enable": true,
+  "html.format.wrapLineLength": 100,
+  "eslint.validate": ["javascript"],
+  "spellright.language": ["en", "es"],
+  "spellright.documentTypes": ["markdown", "latex", "plaintext", "javascript"]
 }

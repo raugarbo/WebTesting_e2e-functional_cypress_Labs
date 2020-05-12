@@ -6,7 +6,7 @@
 
 ## SUT
 
-- [Projects CRUD](https://angularbuilders.github.io/angular-begins/projects)
+- [Projects CRUD](https://angularbuilders.github.io/angular-budget/projects)
 
 ---
 
