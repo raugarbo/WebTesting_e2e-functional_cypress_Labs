@@ -1,4 +1,5 @@
 {
+  "chromeWebSecurity": false,
   "baseUrl": "https://labsademy.github.io/ProtonTasks/",
   "env": {}
 }
