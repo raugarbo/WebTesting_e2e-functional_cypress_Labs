@@ -6,7 +6,7 @@
 // FEATURE:     have web site with courses and a subscribing form
 // As a:        visitor
 // I want to:   view, navigate and subscribe
-// In order to: get information
+// In order to: get information and be notified
 
 describe('GIVEN: the url https://www.bitademy.com', () => {
   // Arrange
