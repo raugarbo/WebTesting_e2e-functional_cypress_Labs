@@ -25,6 +25,7 @@
   "main": "main.js",
   "scripts": {
     "start": "cypress open",
+    "test": "cypress run",
     "format": "prettier --write"
   },
   "devDependencies": {

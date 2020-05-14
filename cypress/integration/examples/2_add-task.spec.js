@@ -1,6 +1,11 @@
 /// <reference types="Cypress" />
 import { click, type } from '../../support/actions';
-import { assertContain, assertContainValue, assertExist } from '../../support/asserts';
+import {
+  assertContain,
+  assertContainValue,
+  assertExist,
+  assertNotContainValue,
+} from '../../support/asserts';
 import { ignoreParcelError } from '../../support/parcel.error';
 const baseUrl = 'baseUrl';
 let sutUrl;
@@ -62,6 +67,7 @@ function actType() {
 function assertDisplaysValue() {
   assertContainValue(selectorFormInput, expectedTaskDescription);
 }
+
 function actTypeAndClick() {
   before(() => {
     type(selectorFormInput, inputTaskDescription);
@@ -70,7 +76,7 @@ function actTypeAndClick() {
   after(() => click(`${selectorIncompleteList} > .delete`));
 }
 function assertInputNotContainValue() {
-  cy.get(selectorFormInput).should('not.contain.value');
+  assertNotContainValue(selectorFormInput).should('not.contain.value');
 }
 function assertIncompleteListContainText() {
   assertContain(`${selectorIncompleteList} > label`, expectedTaskDescription);
