@@ -1,5 +1,3 @@
-/* eslint-disable max-lines-per-function */
-/* eslint-disable max-nested-callbacks */
 /// <reference types="Cypress" />
 import { check, click, type } from '../../support/actions';
 import { assertContain, assertNotExist } from '../../support/asserts';

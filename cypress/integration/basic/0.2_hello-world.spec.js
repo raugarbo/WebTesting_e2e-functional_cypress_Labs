@@ -45,7 +45,7 @@ describe('GIVEN: the url https://www.bitademy.com', () => {
     // Assert
     it('THEN: should navigate bit_letter page', () => {});
     it('AND THEN: should alert me of the invalid email', () => {
-      cy.get('.errorText').contains('learn@bitademy.com ya está suscrito');
+      cy.get('.errorText').contains('learn@bitademy.com');
     });
   });
 });
