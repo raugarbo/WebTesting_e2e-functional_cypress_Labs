@@ -6,7 +6,6 @@ import {
   assertExist,
   assertNotContainValue,
 } from '../../support/asserts';
-import { ignoreParcelError } from '../../support/parcel.error';
 const baseUrl = 'baseUrl';
 let sutUrl;
 let inputButtonText;
@@ -40,7 +39,6 @@ describe(`GIVEN: the To Do List App`, () => {
 });
 
 function arrangeTest() {
-  ignoreParcelError();
   sutUrl = Cypress.env(baseUrl);
   inputButtonText = 'Add task';
   inputTaskDescription = 'Dummy task one';

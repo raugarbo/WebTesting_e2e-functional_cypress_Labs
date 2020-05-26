@@ -1,7 +1,6 @@
 /// <reference types="Cypress" />
 import { check, click, type } from '../../support/actions';
 import { assertContain, assertNotExist } from '../../support/asserts';
-import { ignoreParcelError } from '../../support/parcel.error';
 const baseUrl = 'baseUrl';
 let sutUrl;
 let inputButtonText;
@@ -27,7 +26,6 @@ describe(`GIVEN: an uncompleted task`, () => {
 });
 
 function arrangeTest() {
-  ignoreParcelError();
   sutUrl = Cypress.env(baseUrl);
   inputButtonText = 'Add task';
   inputTaskDescription = 'Dummy task to be completed';

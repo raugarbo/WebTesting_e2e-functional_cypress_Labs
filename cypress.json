@@ -1,6 +1,18 @@
 {
   "chromeWebSecurity": false,
-  "baseUrl": "https://labsademy.github.io/ProtonTasks/",
-  "env": {},
-  "video": false
+  "env": {
+    "baseUrl": "https://labsademy.github.io/ProtonTasks/"
+  },
+  "video": true,
+  "screenshotOnRunFailure": true,
+  "trashAssetsBeforeRuns": true,
+  "reporter": "mochawesome",
+  "reporterOptions": {
+    "charts": false,
+    "html": true,
+    "json": true,
+    "reportDir": "cypress/reports",
+    "reportFilename": "report",
+    "overwrite": false
+  }
 }

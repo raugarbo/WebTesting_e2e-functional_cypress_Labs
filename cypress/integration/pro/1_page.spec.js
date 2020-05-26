@@ -1,6 +1,5 @@
 /// <reference types="Cypress" />
 import { assertContain, assertExist } from '../../support/asserts';
-import { ignoreParcelError } from '../../support/parcel.error';
 const baseUrl = 'baseUrl';
 let sutUrl;
 let expectedTitle;
@@ -24,7 +23,6 @@ describe(`GIVEN: the proton tasks web app`, () => {
 });
 
 function arrangeTest() {
-  ignoreParcelError();
   sutUrl = Cypress.env('baseUrl');
   expectedTitle = 'Proton Tasks';
   selectorHeader = 'header';
