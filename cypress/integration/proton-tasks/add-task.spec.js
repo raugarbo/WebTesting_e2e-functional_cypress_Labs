@@ -1,3 +1,4 @@
+/// <reference types="Cypress" />
 // FEATURE:     the app should allow me to create new tasks
 // As a:        user with tasks to do
 // I want to:   create new tasks
@@ -20,17 +21,22 @@
 
 describe(`GIVEN: the form to add tasks`, () => {
   const sutUrl = 'https://labsademy.github.io/ProtonTasks/';
+
+  const selectorFormInput = 'form > input';
   const inputTaskDescription = 'Dummy task one';
+
   const selectorFormButton = 'form > button';
   const inputButtonText = 'Add task';
+
   const expectedTaskDescription = 'Dummy task one';
   const selectorIncompleteListLabel = '#incomplete-tasks > li:first-child > label';
   const selectorIncompleteListButton = '#incomplete-tasks > li:first-child > button.delete';
-  const selectorFormInput = 'form > input';
   context(`WHEN: I type task description and click on _Add task_`, () => {
     before(() => {
       cy.visit(sutUrl);
+
       cy.get(selectorFormInput).type(inputTaskDescription);
+
       cy.get(selectorFormButton).contains(inputButtonText).click();
     });
     it(`THEN: should clear the input box`, () => {
