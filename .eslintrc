@@ -16,11 +16,12 @@
   "plugins": ["prettier", "cypress"],
 
   "rules": {
+    "prettier/prettier": "warn",
     "complexity": ["error", { "max": 8 }],
     "max-depth": ["error", 2],
     "max-lines": ["warn", 160],
-    "max-lines-per-function": ["warn", 20],
-    "max-nested-callbacks": ["error", 2],
+    "max-lines-per-function": ["warn", 36],
+    "max-nested-callbacks": ["error", 4],
     "max-params": ["warn", 2],
     "no-magic-numbers": [
       "warn",
@@ -28,7 +29,7 @@
     ],
     "no-multiple-empty-lines": ["warn", { "max": 2, "maxEOF": 1 }],
     "no-nested-ternary": "error",
-    "no-unused-vars": ["warn"],
+    "no-unused-vars": [0],
     "@typescript-eslint/no-use-before-define": "off",
     "@typescript-eslint/no-explicit-any": "off"
   }

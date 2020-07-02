@@ -35,17 +35,4 @@ describe('GIVEN: the url https://www.bitademy.com', () => {
       );
     });
   });
-
-  context('WHEN: I fill the subscriber form', () => {
-    // Act
-    before(() => {
-      cy.get('#MERGE0').type('learn@bitademy.com');
-      cy.get('#subscribe-form > .button').click();
-    });
-    // Assert
-    it('THEN: should navigate bit_letter page', () => {});
-    it('AND THEN: should alert me of the invalid email', () => {
-      cy.get('.errorText').contains('learn@bitademy.com');
-    });
-  });
 });
