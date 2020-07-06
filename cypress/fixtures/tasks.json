@@ -1,0 +1,14 @@
+[
+  {
+    "description": "dummy one",
+    "completed": false,
+    "_id": "1",
+    "owner": "tester"
+  },
+  {
+    "description": "two dummies",
+    "completed": false,
+    "_id": "2",
+    "owner": "tester"
+  }
+]
