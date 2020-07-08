@@ -12,21 +12,21 @@
 //  THEN: should not appear on the _Things to do_ list
 //      AND THEN: should appear on the _Things done_ list
 
-describe(`GIVEN: the form with an undone task`, () => {
-  context(`WHEN: I click on the _check box_`, () => {
-    it(`THEN: should not appear on the _Things to do_ list`, () => {});
-    it(`AND THEN: should appear on the _Things done_ list`, () => {});
-  });
-});
+// describe(`GIVEN: the form with an undone task`, () => {
+//   context(`WHEN: I click on the _check box_`, () => {
+//     it(`THEN: should not appear on the _Things to do_ list`, () => {});
+//     it(`AND THEN: should appear on the _Things done_ list`, () => {});
+//   });
+// });
 
-before(() => {
-  cy.visit('');
-});
+// before(() => {
+//   cy.visit('');
+// });
 
 describe(`GIVEN: the form with an undone task`, () => {
   const inputTaskDescription = 'Dummy task one';
   const selectorCompleteList = '#completed-tasks > li:first';
-  const selectorIncompleteList = '#incomplete-tasks > li:first';
+  const selectorIncompleteList = '#incomplete-tasks ';
   const expectedTaskDescription = 'Dummy task one';
   context(`WHEN: I click on the _check box_`, () => {
     before(() => {
