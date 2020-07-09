@@ -8,7 +8,7 @@
 // Scenario:
 //  Given: the url https://www.bitademy.com
 //  When: I visit it
-//  Then: should have bitAdemy on its title
+//  Then: should have BitAdemy on its title
 
 describe('Visiting the url https://www.bitademy.com', () => {
   it('should have _bitAdemy_ on its title', () => {
