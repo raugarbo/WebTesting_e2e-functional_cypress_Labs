@@ -1,6 +1,6 @@
 # WebTesting E2E labs
 
-Laboratories for [Web Testing course](https://github.com/BitAdemy/WebTesting)
+Laboratories for [Web Testing course]
 
 E2E examples and tasks
 
@@ -13,4 +13,3 @@ yarn
 yarn start
 ```
 
-[![bit_ademy](./assets/bit_ademy.png)](https://bitademy.com)
